@@ -2,7 +2,7 @@ USE SAKILA;
 
 /* 3. 숫자 함수 */
 -- 절대값
-SELECT amount, ABS(-payment.amount) AS absolute_amount
+SELECT -amount, ABS(-amount) AS absolute_amount
   FROM payment
  LIMIT 10;
 
@@ -34,4 +34,8 @@ SELECT length, SQRT(length) AS pow_length
 
 -- 7 반올림
 SELECT amount, ROUND(amount) AS round_amount
+  FROM payment;
+
+-- 7 반올림 자리수 세팅
+SELECT amount, ROUND(amount, 1) AS round_amount
   FROM payment;

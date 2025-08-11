@@ -85,6 +85,7 @@ SELECT rental_date
 SELECT rental_id
 	 , rental_date
 	 , DATE_FORMAT(rental_date, '%Y-%m-%d') AS formatted_rental_date
+     , DATE_FORMAT(rental_date, '%y/%M/%D %l:%i:%s') AS formatted_rental_date2
   FROM rental
  LIMIT 10;
 
@@ -94,3 +95,8 @@ SELECT rental_id
 SELECT return_date, DATE_ADD(return_date, INTERVAL 5 DAY) AS expected_return_date
   FROM rental
  WHERE return_date >= '2005-09-01'; -- 2006-01-01 이후 데이터 없어서 조건 변경
+
+-- 4
+SELECT return_date, DATE_ADD(return_date, INTERVAL 5 DAY) AS expected_return_date
+  FROM rental
+ WHERE return_date >= DATE_FORMAT('2005-09-01', '%Y-%m-%d'); -- 2006-01-01 이후 데이터 없어서 조건 변경
